@@ -1,0 +1,155 @@
+﻿@model applynowcrud.Models.JobDetailmvc
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link href="~/css/detail.css" rel="stylesheet" />
+</head>
+<body>
+    <main class="jdbgcolor">
+
+        <div class="jdbgimg border">
+            <div class="d-flex align-items-center ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap text-center">
+                                <h2 class="jdtext">@Html.DisplayFor(model => model.Companyname)</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="container">
+                <div class="row justify-content-between">
+                    <!-- Left Content -->
+                    <div class="col-xl-8 col-lg-9">
+                        <!-- job single -->
+                        <div class="jdbgcolor1">
+                            <div class="jdflex jdmargin jdbox">
+                                <div>
+                                    <a href="#">
+                                        <img src="~/lib/images/building-on-crescent-4303ld.png" width="150px" />
+                                    </a>
+                                </div>
+                                <div>
+                                    <div class="jdjobname">
+                                        <b><h4 class="jdtext">@Html.DisplayFor(model => model.JobCategory)</h4></b>
+                                    </div>
+                                    <ul class="jdflex">
+                                        <li class="jdpadding"><span class="fas fa-hotel"></span>@Html.DisplayFor(model => model.Companyname)</li>
+                                        <li class="jdpadding"><i class="fas fa-map-marker-alt"></i>@Html.DisplayFor(model => model.JobLocation)</li>
+                                        <li class="jdpadding">$@Html.DisplayFor(model => model.Salary)</li>
+                                    </ul>
+                                    @*<span><i style="font-size:24px" class="fa jdsave">&#xf08a;</i></span>*@
+                                </div>
+                            </div>
+                        </div>
+                        <!-- job single End -->
+
+                        <div class="jdbox jdbgcolor1 jdboxdes">
+                            <div class="jdmargin">
+                                <!-- Small Section Tittle -->
+                                <div class="small-section-tittle">
+                                    <h4 class="jdtext"><b>Job Description</b></h4>
+                                </div>
+                                <p>@Html.DisplayFor(model => model.JobDescription)</p>
+                            </div>
+                            <div class="jdmargin">
+                                <!-- Small Section Tittle -->
+                                <div class="small-section-tittle">
+                                    <h4 class="jdtext"><b>Required Knowledge, Skills, and Abilities</b></h4>
+                                </div>
+                                <ul>
+                                    <li>@Html.DisplayFor(model => model.Requiredskills)</li>
+                                    <li>System Software Development</li>
+                                    <li>Mobile Applicationin iOS/Android/Tizen or other platform</li>
+                                    <li>Research and code , libraries, APIs and frameworks</li>
+                                    <li>Strong knowledge on software development life cycle</li>
+                                    <li>Strong problem solving and debugging skills</li>
+                                </ul>
+                            </div>
+                            <div class="jdmargin">
+                                <!-- Small Section Tittle -->
+                                <div class="small-section-tittle">
+                                    <h4 class="jdtext"><b>Education + Experience</b></h4>
+                                </div>
+                                <ul>
+                                    <li>@Html.DisplayFor(model => model.Experience)</li>
+                                    <li>3 or more years of professional design experience</li>
+                                    <li>Direct response email experience</li>
+                                    <li>Ecommerce website design experience</li>
+                                    <li>Familiarity with mobile and web apps preferred</li>
+                                    <li>Experience using Invision a plus</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Right Content -->
+                    <div class="col-xl-4 col-lg-4 ">
+                        <div class="jdmargin jdpadding jdbgcolor1 jdbox">
+                            <!-- Small Section Tittle -->
+                            <div>
+                                <h4 class="jdtext"><b>Job Overview</b></h4>
+                            </div>
+                            <div>
+                                <div class="jdflex jdjoboverview"><label class="jdspace1">End date : </label><span class="jdspace">@Html.DisplayFor(model => model.EndDate)</span></div>
+                                <div class="jdflex jdjoboverview"><label class="jdspace1">Location : </label><span class="jdspace">@Html.DisplayFor(model => model.JobLocation)</span></div>
+                                <div class="jdflex jdjoboverview"><label class="jdspace1">Vacancy : </label><span class="jdspace">@Html.DisplayFor(model => model.NoOfVacancies)</span></div>
+                                <div class="jdflex jdjoboverview"><label class="jdspace1">Job nature : </label><span class="jdspace">@Html.DisplayFor(model => model.JobType)</span></div>
+                                <div class="jdflex jdjoboverview"><label class="jdspace1">Salary :  </label><span class="jdspace">$@Html.DisplayFor(model => model.Salary) yearly</span></div>
+                                
+                                @*<div class="jdflex jdjoboverview"><label class="jdspace1">Application date : </label><span class="jdspace">12 Sep 2020</span></div>*@
+                            </div>
+                            <div class="text-center">
+                                @Html.ActionLink("Apply Now", "Create","applynow", new { id = Model.JobDetailsId }, new { @class = "jdbtn jdbtn1 text-decoration-none" });
+                                @*<a asp-controller="applynow" asp-action="Create" id="#a_tag_id"><button class="jdbtn jdbtn1 ">Apply Now</button></a>*@
+                                @*<a href="<%=Url.Action("Create","applynow",new { id = Model.JobDetailsId })%>">t</a>*@
+                            </div>
+                        </div>
+                        <!-- Small Section Tittle -->Create
+                        <div class="jdbgcolor1 jdbox jdjobdes">
+                            <div class="jdjobdes">
+                                <h4 class="jdtext"><b>Company Information</b></h4>
+                            </div>
+                            <span class="thead-dark">Colorlib</span>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                            <ul>
+                                <li>Name: <span>@Html.DisplayFor(model => model.Companyname) </span></li>
+                                <li>Web : <span> @Html.DisplayFor(model => model.Companyname)ltd.com</span></li>
+                                <li>Email: <span>@Html.DisplayFor(model => model.Email)</span></li>
+                                <li>Phone Number: <span>@Html.DisplayFor(model => model.PhNo)</span></li>
+                                <li>Location: <span>@Html.DisplayFor(model => model.CompanyAddress)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- job post company End -->
+
+    </main>
+    <script>
+        $(document).ready(function () {
+            var id = "10";
+            $('#a_tag_id').attr('href', 'https://localhost:44303/applynow/Create&jobid=' + id);
+        });
+    </script>
+</body>
+
+@*<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.JobDetailsId }) |
+    <a asp-action="Index" asp-controller="jobdetail">Back to List</a>
+</div>*@

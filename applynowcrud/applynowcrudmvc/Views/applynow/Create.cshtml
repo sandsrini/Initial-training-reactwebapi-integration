@@ -1,0 +1,133 @@
+﻿@model applynowcrud.Models.Jdapplynowmvc
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="mt-4">
+        <div class="text-center">
+            <h1>Apply Your Dream Job</h1>
+
+        </div>
+        <div class="img">
+            <div class="container row col-10">
+                <div class="col-sm-6">
+                    @*<img src="~/lib/images/image4.jpg" height="500px" />*@
+                    <img src="~/lib/images/OIP (2).jpg" width="500px" />
+                    @*<img src="~/lib/images/1.jpg" />*@
+                </div>
+                <div class="col-sm-6 bor-color boxs bg-color bor">
+
+
+                    <form asp-action="Create" id="formid" onsubmit="return validateForm()">
+                        <div class="row">
+                            @*<div class="form-group">
+                <label asp-for="ApplyId" class="control-label"></label>
+                <input asp-for="ApplyId" value="id"class="form-control" />
+                <span asp-validation-for="ApplyId" class="text-danger"></span>
+            </div>*@
+                            <div class="form-group col-sm-6 ">
+                                <label for="name"><b>Name</b></label>
+                                <input type="text" asp-for="Name" class="form-control bor-color inpbor" placeholder="Enter Your Name">
+                                <span asp-validation-for="Name" class="text-white"></span>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="email"><b>Email</b></label>
+                                <input type="email" asp-for="UserEmail" class="form-control bor-color inpbor" placeholder="Enter email">
+                                <span asp-validation-for="UserEmail" class="text-white"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="link"><b>Website or portfolio link</b></label>
+                            <input type="text" asp-for="Link" class="form-control bor-color inpbor" placeholder="Enter Portfolio Link">
+                            <span asp-validation-for="Link" class="text-white"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="letter">
+                                <b>Cover Letter</b>
+                            </label>
+                            <input type="text" asp-for="Letter" class="form-control bor-color inpbor" placeholder="Coverletter">
+                            <br />
+                        </div>
+                        <div class="form-group">
+                            <label for="resume"><b>Upload CV(only text files)</b></label><br />
+                            <input type="file" asp-for="Resume" accept="txt" class="text-white">
+
+                            <span asp-validation-for="Resume" class="jderr"></span>
+                        </div> <div class="form-group col-sm-6 ">
+                            <label for="JobId"><b>JobId</b></label>
+                            <input type="number" asp-for="JobId" class="form-control bor-color inpbor" value="@ViewData["id"]">
+                            <span asp-validation-for="JobId" class="text-white"></span>
+                        </div>
+
+                        <div class="text-center">
+
+                            <button type="submit" id="mybtn" class="btn btn-color1 col-sm-4 inpbor" data-bs-toggle="modal" data-bs-target="#exampleModal">Apply Now</button>
+                            <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-color1 col-sm-4 inpbor">Back</button></a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                        @*<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>*@
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <div class="modal-body">
+                    Applied Successfully...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    @*<button type="button" class="btn btn-primary">Understood</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#formid").submit(function () {
+                if (invalid) {
+                    //Suppress form submit
+                    return false;
+                } else {
+                    $("#mybtn").click(function () {
+                        $("#staticBackdrop").modal();
+                    });
+                }
+            });
+
+            $("#mybtn").click(function () {
+                $("#staticBackdrop").modal();
+            });
+            
+        });
+        
+
+    </script>
+</body>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
